@@ -17,3 +17,4 @@
 動いたら、前回のコードと見比べます。
 
 Lesson 06 なら、前回 phpMyAdmin や SQL で作ったテーブルが仕様書
+[pf_shop要件定義_ショッピングサイト.xlsx](pf_shop%E8%A6%81%E4%BB%B6%E5%AE%9A%E7%BE%A9_%E3%82%B7%E3%83%A7%E3%83%83%E3%83%92%E3%82%9A%E3%83%B3%E3%82%AF%E3%82%99%E3%82%B5%E3%82%A4%E3%83%88.xlsx)[PHP_Laravel_対応表.xlsx](PHP_Laravel_%E5%AF%BE%E5%BF%9C%E8%A1%A8.xlsx)![画面全体の構成.png](%E7%94%BB%E9%9D%A2%E5%85%A8%E4%BD%93%E3%81%AE%E6%A7%8B%E6%88%90.png)
