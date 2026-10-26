@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->integer('board_id');
-            $table->dateTime('send_date');
-            $table->integer('to_user');
-            $table->integer('from_user');
-            $table->string('msg');
+            $table->foreignId('board_id')->constrained('message_boards');
+           // $table->timestamp('send_date')->nullable();
+            $table->foreignId('to_user_id')->constrained('users');
+            $table->foreignId('from_user_id')->constrained('users');
+            $table->text('msg');
             $table->softDeletes();
             $table->timestamps();
         });
