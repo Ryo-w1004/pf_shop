@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Models\User;
 
 class SignupController extends Controller
 {
@@ -32,49 +33,9 @@ class SignupController extends Controller
         ]);
 
 
-
-
-
-
-
-
-
-
-//                        //例外処理
-//                        try {
-//                            // DBへ接続
-//                            $dbh = dbConnect();
-//                            // SQL文作成
-//                            $sql = 'INSERT INTO users (email,password,login_time,create_date) VALUES(:email,:pass,:login_time,:create_date)';
-//                            $data = array(':email' => $email, ':pass' => password_hash($pass, PASSWORD_DEFAULT),
-//                                ':login_time' => date('Y-m-d H:i:s'),
-//                                ':create_date' => date('Y-m-d H:i:s'));
-//                            // クエリ実行
-//                            $stmt = queryPost($dbh, $sql, $data);
-//
-//                            // クエリ成功の場合
-//                            if($stmt){
-//                                //ログイン有効期限（デフォルトを１時間とする）
-//                                $sesLimit = 60*60;
-//                                // 最終ログイン日時を現在日時に
-//                                $_SESSION['login_date'] = time();
-//                                $_SESSION['login_limit'] = $sesLimit;
-//                                // ユーザーIDを格納
-//                                $_SESSION['user_id'] = $dbh->lastInsertId();
-//
-//                                Log::debug('セッション変数の中身：'.print_r($_SESSION,true));
-//
-//                                header("Location:mypage.php"); //マイページへ
-//                            }
-//
-//                        } catch (Exception $e) {
-//                            error_log('エラー発生:' . $e->getMessage());
-//                        }
-//
-//                    }
-//
-
-
-        return view('signup');
+        $user = User::createUser($request->email, $request->password);
+        auth()->login($user);
+        $request->session()->regenerate();
+        return redirect('/');
     }
 }
