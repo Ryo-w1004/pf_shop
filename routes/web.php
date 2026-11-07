@@ -2,11 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\LoginController;
 
 
 
-route::get('/signup', [SignupController::class, 'show']);
-route::post('/signup', [SignupController::class, 'store']);
+Route::get('/signup', [SignupController::class, 'show']);
+Route::post('/signup', [SignupController::class, 'store']);
+Route::get('/login', [LoginController::class, 'show']);
+Route::post('/login', [LoginController::class, 'store']);
+Route::post('/logout', [LoginController::class, 'destroy']);
 
 
 Route::get('/', function () {
