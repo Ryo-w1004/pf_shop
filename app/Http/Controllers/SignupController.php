@@ -36,6 +36,6 @@ class SignupController extends Controller
         $user = User::createUser($request->email, $request->password);
         auth()->login($user);
         $request->session()->regenerate();
-        return redirect('/');
+        return redirect('mypage');
     }
 }

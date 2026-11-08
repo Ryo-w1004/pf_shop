@@ -10,7 +10,7 @@
           @endguest
               @auth
                   <li><a>{{ Auth::user()->email }} でログイン中</a></li>
-                  <li><a href="mypage.php">マイページ</a></li>
+                  <li><a href="/mypage">マイページ</a></li>
                   <li>
                       <form action="/logout" method="post">
                           @csrf
