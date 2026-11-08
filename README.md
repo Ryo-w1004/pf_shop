@@ -7,7 +7,7 @@
 - Laravel 13 / PHP 8.4
 - MySQL
 - Git / GitHub
-- AWS(公開予定)
+- AWS
 
 ## 現在の状況
 作成中。
