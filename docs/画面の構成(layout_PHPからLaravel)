@@ -1,0 +1,19 @@
+・どの画面があるか(ファイルの一覧)
+
+footer.php
+head.php
+header.php
+index.php
+profEdit.php
+tranSale.php
+witdhdraw.php
+
+
+・全画面で共通の部品は何か(ヘッダー、フッター、require で読み込んでいたもの)
+<script src="js/vendor/jquery-2.2.2.min.js"></script>
+<script>
+
+・CSS や画像を、どこに置いていたか
+cssはuploads
+画像は./img
+

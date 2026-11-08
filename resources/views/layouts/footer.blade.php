@@ -1,6 +1,6 @@
 
 <footer id="footer">
-    Copyright <a href="http://webukatu.com/">ウェブカツ!!WEBサービス部</a>. All Rights Reserved.
+{{--    Copyright <a href="http://webukatu.com/">ウェブカツ!!</a>. All Rights Reserved.--}}
 </footer>
 
 <script src="{{ asset('js/vendor/jquery-2.2.2.min.js') }}"></script>
