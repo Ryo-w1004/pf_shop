@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WithdrawController;
 
 
 Route::get('/', function () {
@@ -22,22 +23,18 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::post('/logout', [LoginController::class, 'destroy']);
-    Route::get('/mypage', function () {
-        return view('mypage');
-    });
 
-    Route::get('/tranSale', function () {
-        return view('tranSale');
-    });
-    Route::get('/profEdit', function () {
-        return view('profEdit');
-    });
-    Route::get('/withdraw', function () {
-        return view('withdraw');
-    });
-    Route::get('/passEdit', function () {
-        return view('passEdit');
-    });
+    // マイページまわり(今は画面を出すだけ)
+    Route::view('/mypage', 'mypage');
+    Route::view('/tranSale', 'tranSale');
+    Route::view('/profEdit', 'profEdit');
+    Route::view('/passEdit', 'passEdit');
+
+    // 退会
+    Route::get('/withdraw', [WithdrawController::class, 'show']);
+    Route::post('/withdraw', [WithdrawController::class, 'destroy']);
+
+    // ログアウト(状態を変えるので POST)
+    Route::post('/logout', [LoginController::class, 'destroy']);
 
 });

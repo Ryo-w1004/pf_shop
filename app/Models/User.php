@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-#[Fillable(['name', 'email', 'password','login_time'])]
+#[Fillable(['name', 'email', 'password','login_time','deleted_at'])]
 #[Hidden(['password', 'remember_token'])]
 
 //Model(Laravel の本体。create()、find()、save() などが書いてある)
@@ -53,4 +53,10 @@ class User extends Authenticatable
         return $this->update(['login_time' => now()]);
     }
 
+    public function withdraw()
+    {
+        $this->update(['email' => 'deleted_' . $this->id . '_' . $this->email]);
+        $this->delete();
+        return $this;
+    }
 }
