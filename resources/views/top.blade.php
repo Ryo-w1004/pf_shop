@@ -72,12 +72,7 @@ $siteTitle = 'HOME';
         </div>
 
         <!----><?php //pagination($currentPageNum, $dbProductData['total_page']); ?><!---->
-
       </section>
-        @include('layouts.sidebar_mypage')
     </div>
 
-
-
-      @include('layouts.footer')
-
+@include('layouts.footer')
