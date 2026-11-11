@@ -2,6 +2,7 @@
 <?php
 $siteTitle = 'HOME';
 ?>
+
 @include('layouts.head')
 
   <body class="page-home page-2colum">

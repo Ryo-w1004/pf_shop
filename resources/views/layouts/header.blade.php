@@ -20,7 +20,16 @@
               @endauth
 
 
-</ul>
-</nav>
-</div>
-</header>
+        </ul>
+
+    </nav>
+
+    </div>
+    </header>
+@if (session('status_success'))
+    <p id="js-show-msg" style="display:none;" class="msg-slide">
+        {{ session('status_success') }}
+    </p>
+@endif
+
+

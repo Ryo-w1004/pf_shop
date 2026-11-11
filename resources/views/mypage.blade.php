@@ -1,6 +1,7 @@
 <?php $siteTitle = 'マイページ'; ?>
 
 @include('layouts.head')
+
 <body class="page-mypage page-2colum page-logined">
 @include('layouts.header')
 
