@@ -25,7 +25,15 @@ class ProfileController extends Controller
             'age' => 'nullable|integer|min:0|max:130',
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore(Auth::id())],
             'introduction' => 'nullable|string|max:500',
+            'pic' => 'nullable|image|mimes:jpeg,jpg,bmp,png|max:3072',
         ]);
+        if ($request->hasFile('pic')) {
+            // 画像を保存して、戻ってきたパスを $validated に入れる
+            $validated['pic'] = $request->file('pic')->store('profile', 'public');
+        } else {
+            // 画像がないので、$validated から pic を取り除く
+            unset($validated['pic']);
+        }
 
         Auth::user()->updateProfile($validated);
 

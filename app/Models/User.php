@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 
-#[Fillable(['name', 'email', 'password','login_time','age','tel','zip','addr','introduction'])]
+#[Fillable(['name', 'email', 'password','login_time','age','tel','zip','addr','introduction','pic'])]
 #[Hidden(['password', 'remember_token'])]
 
 //Model(Laravel の本体。create()、find()、save() などが書いてある)

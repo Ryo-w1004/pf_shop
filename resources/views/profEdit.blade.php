@@ -87,9 +87,9 @@ $siteTitle = 'ProfEdit';
 
                 プロフィール画像
                 <label class="area-drop <?php if(!empty($err_msg['pic'])) echo 'err'; ?>" style="height:370px;line-height:370px;">
-                    <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="3145728" >
                     <input type="file" name="pic" class="input-file" style="height:370px;">
-                    <img src="{{ old('pic',$user->pic) }}" alt="" class="prev-img" style="<?php //if(empty(getFormData('pic'))) echo 'display:none;' ?>">
+                    <img src=" @if(!empty($user->pic)) {{ asset('storage/'.$user->pic) }}@endif " alt="" class="prev-img" style="@if(empty($user->pic))display:none @endif">
                     ドラッグ＆ドロップ
                 </label>
                 <div class="area-msg">
