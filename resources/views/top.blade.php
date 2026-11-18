@@ -2,6 +2,7 @@
 <?php
 $siteTitle = 'HOME';
 ?>
+
 @include('layouts.head')
 
   <body class="page-home page-2colum">
@@ -72,12 +73,7 @@ $siteTitle = 'HOME';
         </div>
 
         <!----><?php //pagination($currentPageNum, $dbProductData['total_page']); ?><!---->
-
       </section>
-
     </div>
 
-    <!-- footer -->
-
-      @include('layouts.footer')
-
+@include('layouts.footer')

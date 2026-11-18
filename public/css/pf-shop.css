@@ -1,0 +1,11 @@
+
+
+.page-withdraw {
+
+    .form .btn {
+        float: none;
+    }
+    .form {
+        text-align: center;
+    }
+}

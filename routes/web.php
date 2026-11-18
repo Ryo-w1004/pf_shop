@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WithdrawController;
+use App\Http\Controllers\ProfileController;
 
 
 Route::get('/', function () {
@@ -29,6 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::view('/tranSale', 'tranSale');
     Route::view('/profEdit', 'profEdit');
     Route::view('/passEdit', 'passEdit');
+
+    //プロフ編集
+    Route::get('/profEdit',[ProfileController::class, 'edit']);
+    Route::post('/profEdit',[ProfileController::class, 'update']);
 
     // 退会
     Route::get('/withdraw', [WithdrawController::class, 'show']);
