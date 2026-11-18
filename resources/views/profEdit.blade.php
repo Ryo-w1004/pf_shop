@@ -16,12 +16,13 @@ $siteTitle = 'ProfEdit';
     <section id="main" >
         <div class="form-container">
             <form action="" method="post" class="form" enctype="multipart/form-data">
+                @csrf
                 <div class="area-msg">
                     @error('common')
                     {{ $message }}
                     @enderror
                 </div>
-                <label class="<?php if(!empty($err_msg['name'])) echo 'err'; ?>">
+                <label class="@error('name') err @enderror">
                     名前
                     <input type="text" name="name" value="{{ old('name',$user->name) }}">
                 </label>
@@ -30,7 +31,7 @@ $siteTitle = 'ProfEdit';
                     {{ $message }}
                     @enderror
                 </div>
-                <label class="<?php if(!empty($err_msg['tel'])) echo 'err'; ?>">
+                <label class="@error('tel') err @enderror">
                     TEL<span style="font-size:12px;margin-left:5px;">※ハイフン無しでご入力ください</span>
                     <input type="text" name="tel" value="{{ old('tel',$user->tel) }}">
                 </label>
@@ -39,7 +40,7 @@ $siteTitle = 'ProfEdit';
                     {{ $message }}
                     @enderror
                 </div>
-                <label class="<?php if(!empty($err_msg['zip'])) echo 'err'; ?>">
+                <label class="@error('zip') err @enderror">
                     郵便番号<span style="font-size:12px;margin-left:5px;">※ハイフン無しでご入力ください</span>
                     <input type="text" name="zip" value="{{ old('zip',$user->zip) }}">
                 </label>
@@ -48,7 +49,7 @@ $siteTitle = 'ProfEdit';
                     {{ $message }}
                     @enderror
                 </div>
-                <label class="<?php if(!empty($err_msg['addr'])) echo 'err'; ?>">
+                <label class="@error('addr') err @enderror">
                     住所
                     <input type="text" name="addr" value="{{ old('addr',$user->addr) }}">
                 </label>
@@ -57,7 +58,7 @@ $siteTitle = 'ProfEdit';
                     {{ $message }}
                     @enderror
                 </div>
-                <label style="text-align:left;" class="<?php if(!empty($err_msg['age'])) echo 'err'; ?>">
+                <label style="text-align:left;" class="@error('age') err @enderror">
                     年齢
                     <input type="number" name="age" value="{{ old('age',$user->age) }}">
                 </label>
@@ -66,7 +67,7 @@ $siteTitle = 'ProfEdit';
                     {{ $message }}
                     @enderror
                 </div>
-                <label class="<?php if(!empty($err_msg['email'])) echo 'err'; ?>">
+                <label class="@error('email') err @enderror">
                     Email
                     <input type="text" name="email" value="{{ old('email',$user->email) }}">
                 </label>
@@ -75,9 +76,9 @@ $siteTitle = 'ProfEdit';
                     {{ $message }}
                     @enderror
                 </div>
-                <label class="@error('introduction') 'err' @enderror ">
+                <label class="@error('introduction') err @enderror ">
                     自己紹介
-                    <input type="text" name="introduction" value="{{ old('email',$user->introduction) }}">
+                    <textarea name="introduction">{{ old('introduction',$user->introduction) }}</textarea>
                 </label>
                 <div class="area-msg">
                     @error('introduction')
@@ -86,10 +87,10 @@ $siteTitle = 'ProfEdit';
                 </div>
 
                 プロフィール画像
-                <label class="area-drop <?php if(!empty($err_msg['pic'])) echo 'err'; ?>" style="height:370px;line-height:370px;">
+                <label class="area-drop @error('pic') err @enderror" style="height:370px;line-height:370px;">
                     <input type="hidden" name="MAX_FILE_SIZE" value="3145728" >
                     <input type="file" name="pic" class="input-file" style="height:370px;">
-                    <img src=" @if(!empty($user->pic)) {{ asset('storage/'.$user->pic) }}@endif " alt="" class="prev-img" style="@if(empty($user->pic))display:none @endif">
+                    <img src="@if(!empty($user->pic)) {{ asset('storage/'.$user->pic) }}@endif " alt="" class="prev-img" style="@if(empty($user->pic))display:none @endif">
                     ドラッグ＆ドロップ
                 </label>
                 <div class="area-msg">

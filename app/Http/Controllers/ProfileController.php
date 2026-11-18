@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
-
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -27,7 +27,10 @@ class ProfileController extends Controller
             'introduction' => 'nullable|string|max:500',
             'pic' => 'nullable|image|mimes:jpeg,jpg,bmp,png|max:3072',
         ]);
+
+        $oldPic = null;
         if ($request->hasFile('pic')) {
+            $oldPic = Auth::user()->pic;
             // 画像を保存して、戻ってきたパスを $validated に入れる
             $validated['pic'] = $request->file('pic')->store('profile', 'public');
         } else {
@@ -36,6 +39,10 @@ class ProfileController extends Controller
         }
 
         Auth::user()->updateProfile($validated);
+
+        if ($oldPic) {
+            Storage::disk('public')->delete($oldPic);
+        }
 
         return redirect('/mypage')
             ->with([
