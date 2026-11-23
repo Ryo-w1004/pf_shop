@@ -21,7 +21,7 @@ class SignupController extends Controller
         Log::debug('「　ユーザー登録ページ　');
         Log::debug('「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「');
         Log::debug('ユーザー登録ページ');
-        var_dump($request->all());
+
 
         //post送信されていた場合
         $request->validate([

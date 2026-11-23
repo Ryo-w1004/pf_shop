@@ -66,4 +66,10 @@ class User extends Authenticatable
         $this->delete();
         return $this;
     }
+    public function updatePassword(String $password)
+    {
+        //カラム指定をしっかりやる
+        //passwordだけを配列の形にして更新
+        return $this->update(['password'=>$password]);
+    }
 }
