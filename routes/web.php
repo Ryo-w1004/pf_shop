@@ -5,6 +5,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\WithdrawController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PasswordController;
 
 
 Route::get('/', function () {
@@ -41,5 +42,9 @@ Route::middleware('auth')->group(function () {
 
     // ログアウト(状態を変えるので POST)
     Route::post('/logout', [LoginController::class, 'destroy']);
+
+    //パスワード変更
+    Route::get('/passEdit',[PasswordController::class, 'edit']);
+    Route::post('/passEdit',[PasswordController::class, 'update']);
 
 });

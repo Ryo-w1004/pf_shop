@@ -9,3 +9,10 @@
         text-align: center;
     }
 }
+
+.page-passEdit{
+
+    .form{
+        margin-top:50px;
+    }
+}
