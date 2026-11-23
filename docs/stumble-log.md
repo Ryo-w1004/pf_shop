@@ -197,3 +197,31 @@ pf-shop を作る中でつまずいたことと、原因・解決・学んだこ
 - **原因**: GitHub 上で README を編集していて、Mac と GitHub のブランチが枝分かれしていた
 - **解決**: `git pull --no-rebase` でマージしてから push
 - **学び**: GitHub 上で直接編集すると枝分かれが起きる
+
+
+
+
+*2026_11_23------
+### validate() にメッセージの文を書いてしまった
+- **症状**: `Method Validator::validateパスワードを変更してください does not exist`
+- **原因**: validate() の1つ目の配列(ルール)に、表示したいメッセージを書いていた。1つ目の配列の値は、すべてルール名として読まれる
+- **解決**: ルールは1つ目の配列、メッセージは2つ目の配列に `'欄の名前.ルール名' => '文'` の形で書いた
+- **学び**: `=>` の左は欄の名前(キー)、右はルール名の文字列。Laravel はルール名を見て validate○○ メソッドを呼ぶ
+
+### dd($request->$validated) でエラー
+- **症状**: `Array to string conversion`
+- **原因**: `->` のあとに変数を書くと、その中身を名前として使う意味になる。$validated は配列なので名前にできない
+- **解決**: `dd($validated)` にした
+- **学び**: $validated は $request の中身ではなく、validate() が返した独立した変数
+
+### 同じパスワードで変更できてしまった
+- **症状**: 新旧同じパスワードでも変更が成功した
+- **原因**: validate() に password の形式チェックしか書いておらず、current_password・different・confirmed のルールがなかった
+- **解決**: current_password に `required|current_password`、password に `different:current_password|confirmed` を足した
+- **学び**: 決めたルールが全部コードに入っているか、表と見比べて確認する。古いパスワードのチェックがないと、他人がパスワードを変えられてしまう
+
+### README の Merge conflict
+- **症状**: PR #4 に「Merge conflicts」と出た
+- **原因**: README を GitHub 上で main に直接書いたあと、Mac の feature/password でも同じ場所を書いて push した
+- **解決**: GitHub の Resolve conflicts で「Accept current change」(feature/password の版)を選び、Mark as resolved → Commit merge。その後 Mac で git pull
+- **学び**: ファイルの編集は Mac の作業ブランチでだけやる。GitHub 上で main を直接編集しない
