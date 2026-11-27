@@ -72,4 +72,6 @@ class User extends Authenticatable
         //passwordだけを配列の形にして更新
         return $this->update(['password'=>$password]);
     }
+
+
 }
