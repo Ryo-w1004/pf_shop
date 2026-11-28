@@ -12,7 +12,14 @@ pf-shop を作る中でつまずいたことと、原因・解決・学んだこ
 
 ---
 
-## パスワード変更(Lesson 15)
+### APP_TIMEZONE を入れたのに時刻が9時間ずれる
+- **症状**: Seeder で入れたデータの created_at が UTC(日本時間の9時間前)になっていた
+- **原因**: .env に APP_TIMEZONE=Asia/Tokyo を書いていたが、config/app.php の timezone が 'UTC' で固定されていて、.env を読んでいなかった
+- **解決**: config/app.php の timezone を env('APP_TIMEZONE', 'UTC') の形にした
+- **学び**: .env は config/ のファイルが env() で読んで初めて効く。.env を変えて効かないときは、config/ 側を見る
+
+
+## パスワード変更
 
 ### 入力欄の name を取り違えた
 - **症状**: 新しいパスワードの欄に `name="current_password"` を付けていた
